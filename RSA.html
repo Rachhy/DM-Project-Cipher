@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Battambang:wght@100;300;400;700;900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Koulen&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <title>DM Cipher Project</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Battambang:wght@100;300;400;700;900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Koulen&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+            box-sizing:border-box;
+        }
+        body
+        {
+            margin:0;
+            padding:0 ;
+        }
+        button
+        {
+            margin-left: 20px;
+        }
+        .ler
+        {
+            background-color: rgb(14, 14, 68);
+           padding-bottom: 10px ;
+           padding-top: 10px;
+        }
+    
+        .kbal
+        {
+            background-color: #888888;
+            display:grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            max-height:200px;
+            box-shadow:4px 7px 13px 6px  #474545;
+            width: 90%;
+            margin:auto;
+            margin-bottom: 15px;
+        }
+        .kbaltoch
+        {
+           text-align: center; 
+           max-height: 90%;
+       
+        }
+        .kbaltoch-2
+        {
+           text-align: center;
+           margin-top: 13px;
+           max-height: 90%;
+
+        }
+        .kbaltoch-1
+        {
+            text-align: center;
+            font-size: clamp(17px, 4vw, 35px);
+            font-family: "Playfair Display", serif;
+            color:white;
+            max-height: 90%;
+            margin-top: 16px;
+            font-weight: bold;
+            padding-bottom: 5px;
+        }
+        .sub
+        {
+            
+            height: auto;
+            width: 90%;
+            margin:auto;
+            border:solid;
+            border-width: 2px;
+            border-color:rgb(229, 228, 233);
+            display: grid;
+            border-radius: 10px;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+        .subtoch-1{
+            
+            text-align: center;
+            padding-top:10px ;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: clamp(14px, 4vw, 23px);
+            color: white;
+        }
+        .subtoch-2{
+            text-align: center;
+            font-family: "Playfair Display", serif;
+            font-weight: bold;
+            font-size: clamp(14px, 4vw, 18px);
+
+
+        }
+        .subtoch-2{
+            text-align: center;
+            font-family: "Playfair Display", serif;
+            font-weight: bold;
+            font-size: clamp(14px, 4vw, 20px);
+            margin-top: 0px;
+            color: aliceblue;
+        
+        }
+        .subtoch-3{
+            text-align: center;
+            font-family: "Playfair Display", serif;
+            font-weight: 700;
+            font-size: clamp(14px, 4vw, 18px);
+         color: white;
+
+        }
+        .subtoch-4{
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            font-size: clamp(14px, 4vw, 18px);
+           color: white;
+
+        }
+        .subtoch-5{
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            font-size: clamp(14px, 4vw, 18px);
+            color: white;
+
+        }
+        .subtoch-6{
+            text-align: center;
+            font-family: "Playfair Display", serif;
+            font-weight: 700;
+            font-size: clamp(14px, 4vw, 18px);
+            color: aliceblue;
+      
+        }
+        .subtoch-7{
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            font-size: clamp(14px, 4vw, 18px);
+            color: white;
+
+        }
+        .subtoch-8{
+            padding: 8px 10px;
+            font-family:Helvetica, sans-serif;
+            font-size: clamp(14px, 2vw, 16px);
+            text-align: center;
+         color: white;
+        }
+        .ti1
+        {
+            
+            height: auto;
+            width: 90%;
+            margin:auto;
+            border:solid;
+            border-width: 2px;
+            border-color:rgb(9, 9, 12);
+            border-radius: 10px;
+            padding-bottom: 5px;
+            margin-top: 10px;
+            box-shadow:4px 7px 13px 6px  #474545;
+        }
+        @media (max-width: 1382px) {
+    .ti1 {
+      height: auto; 
+    } 
+}
+        
+        .ti-1
+        {
+             font-size: clamp(18px, 4vw, 25px);
+             padding: 10px 20px;
+             font-weight: bold;
+             height:20px;
+             display: inline-block;
+             margin-bottom: 30px;
+        }
+        .ti-2{
+
+            padding: 20px;
+            display: flex;        
+            flex-wrap: wrap;       
+            justify-content: center;
+            align-items: center;
+            gap: 100px;  
+        }
+
+        .ti-2-toch{
+            flex: 0 1 250px;       
+            height: auto;
+        }
+
+        .ti-2-toch img{
+            width: 100%;
+            display: block;
+            border-radius: 12px;
+            transform: scale(1.15); 
+            transition: transform 0.3s ease;
+}
+
+        .ti-2-toch:hover img{
+            transform: scale(0.95);     
+         }
+         .jubjub
+         {
+             border-radius: 12px;
+            transform: scale(0.9); 
+             transition: transform 0.3s ease;
+         }
+         .jubjub:hover
+         {
+             transform: scale(1);
+         }
+.ahsor
+        {
+            text-align: center;
+            font-weight: 500px;
+        }
+.lala{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:clamp(5px, 3vw, 14px);
+    font-weight: 500;
+}  
+.yeah {
+    display: flex;
+    gap: 20px;            
+    align-items: flex-start;
+    
+}
+.yeahss {
+    display: flex;
+    gap: 10px;            
+    align-items: center;
+    
+}
+
+.lglg {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;  
+    margin-left: 20px;
+    line-height: 20px;
+    margin-top: 5px;             
+}
+
+
+input,
+textarea {
+    width: 220px;
+    padding: 8px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+textarea {
+    resize: vertical;      
+}
+    .yeahss {
+        flex-direction: column;
+    }
+
+@media (max-width: 1650px) {
+    .yeah {
+        flex-direction: column;
+    }
+}
+  @media (max-width: 1650px) {
+    .uu {
+        width: 0px;
+        height: 0px;
+        margin-top: 0px;
+    }
+    .git
+    {
+        margin-left: 20px;
+    }
+}
+.git
+{
+    margin-left: 0px;
+}
+.butt
+{
+    padding: 10px 20px;
+    background-color: rgb(73, 75, 77);
+    border: none;
+    border-radius: 5px;
+    margin-top: 28px;
+    margin-left: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: white;
+    transform: scale(1); 
+    transition: transform 0.3s ease;
+    cursor: pointer;    
+}
+.butt:hover
+{
+    transform: scale(1.25); 
+    transition: transform 0.3s ease;
+    font-weight: bolder;
+    box-shadow:2px 0px 10px 5px  #c54040;
+}
+.butt:active
+{
+    transform: scale(1); 
+    transition: transform 0.3s ease;
+    font-weight: bold;
+    box-shadow: none;
+}
+.buttb
+{
+    padding: 10px 20px;
+    background-color: rgb(50, 122, 194);
+    border: none;
+    border-radius: 5px;
+    margin-top: 28px;
+    margin-left: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: white;
+    transform: scale(1); 
+    transition: transform 0.3s ease; 
+    cursor: pointer;     
+}
+.buttb:hover
+{
+    transform: scale(1.25); 
+    transition: transform 0.3s ease;
+    font-weight: bolder;
+    box-shadow:2px 0px 10px 5px  #3242cc;
+    cursor: pointer;  
+}
+.buttb:active
+{
+    transform: scale(1); 
+    transition: transform 0.3s ease;
+    font-weight: bold;
+    box-shadow: none;
+}
+.buttg
+{
+    padding: 10px 20px;
+    background-color: rgb(65, 152, 233);
+    border: none;
+    border-radius: 5px;
+    margin-top: 28px;
+    margin-left: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: white;
+    transform: scale(1); 
+    transition: transform 0.3s ease;
+    cursor: pointer;      
+}
+.buttg:hover
+{
+    transform: scale(1.25); 
+    transition: transform 0.3s ease;
+    font-weight: bolder;
+    box-shadow:2px 0px 10px 5px  #43c71b;
+}
+.buttg:active
+{
+    transform: scale(1); 
+    transition: transform 0.3s ease;
+    font-weight: bold;
+    box-shadow: none;
+}
+    .member-link{
+      cursor: pointer;
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 8px 14px;
+      border: 1px solid #000;
+      border-radius: 10px;
+      display: inline-block;
+      margin: none;
+      background-color:white;
+      color: black;
+      font-weight: bold;
+      transform: scale(1); 
+      transition: transform 0.3s ease;
+      margin-top: 8px;
+      margin-bottom: 8px;
+      border: none;
+    }
+    .member-link:hover{
+        transform: scale(1.3);
+        font-weight: bolder;
+        box-shadow:2px 0px 10px 5px  #d3cfcf;
+        border: none;
+    }
+
+    #overlay{
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      z-index: 999;
+    }
+    .boss{
+      width: 50%;
+      margin: 0;
+      border: 2px solid rgb(9, 9, 12);
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 4px 7px 13px 6px #474545;
+
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+
+      display: none;
+      z-index: 1000;
+    }
+
+    .yeahs{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 35px;
+      justify-content: center;
+      padding: 15px 10px;
+    }
+    .lglgs{
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .lglgs img{
+      width: 130px;
+      height: auto;
+      border-radius: 10px;
+      object-fit: cover;
+       box-shadow:2px 0px 10px 5px  #0a0b16;
+       padding: 5px;
+    }
+
+ 
+    .close-btn{
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      cursor: pointer;
+      font-size: 18px;
+      color: red;
+
+    }
+    @media (max-width: 600px){
+      .boss{ width: 85%; }
+      .lglgs img{ width: 70px; height: auto; }
+    }
+    .names
+    {
+        padding-top:13px;
+        font-family:Arial, Helvetica, sans-serif;
+        font-size: clamp(12px,2vw,16px);
+        font-weight: bold;
+    }
+    .Context
+{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: center;
+    background-color: rgb(7, 7, 97);
+}
+    .loveu
+    {
+        border: solid;
+        padding: 10px 15px;
+        border-width: 1px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: clamp(14px,2vw,25px);
+        margin-right: 5px;
+        color: aliceblue;
+        transform: scale(1); 
+        transition: transform 0.3s ease;
+        cursor: pointer;
+        border-radius: 5px;      
+}
+.loveu:hover
+{
+    transform: scale(1.2); 
+    transition: transform 0.3s ease;
+    font-weight: bolder;
+    box-shadow:2px 0px 10px 5px  #e4e6e4;
+    color: #000;
+    background-color: aliceblue;
+}
+.loveu:active
+{
+    transform: scale(1); 
+    transition: transform 0.4s ease;
+    font-weight: bolder;
+    box-shadow:2px 0px 10px 5px  #e4e6e4;
+    color: #000;
+    background-color: aliceblue;
+}
+    
+    </style>
+</head>
+<body class="c" >
+    <div class="ler">
+    <div class="kbal">
+        
+        <div class="kbaltoch"><img width="110px" src="pic/images-removebg-preview.png" alt=""></div>
+        <div class="kbaltoch-1">ENCRYPTION AND DECRYPTION
+            <div class="lala">ITE Year 2 - Cipher Project</div>
+        </div>
+        <div class="kbaltoch-2"><img width="80px" src="pic/image copy.png" alt=""></div>
+    </div>
+    <div class="sub">
+        <div class="subtoch-1">Submitted to:</div>
+        <div class="subtoch-2">Mr.LIM Seyha</div>
+        <div class="subtoch-3">Mathematic Lecturer, Royal University of Phnom Penh, Phnom Penh</div>
+        <div class="subtoch-4">April 22,2025</div>
+        <div class="subtoch-5">by</div>
+        <div class="subtoch-6">Group: Meowww</div>
+        <div class="subtoch-7"><span class="member-link" onclick="openMember()">Checking Members</span>
+
+  <div id="overlay" onclick="closeMember()"></div>
+
+  <div class="boss" id="memberBox">
+    <span class="close-btn" onclick="closeMember()">✖</span>
+
+    <div class="yeahs">
+      <div class="lglgs">
+        <img src="pic/battman-removebg-preview.png" alt="">
+        <p class="names" style="margin:0; color:black;">Cheng Virak<br>ID: 000097623</p>
+      </div>
+
+      <div class="lglgs">
+        <img src="pic/battman-removebg-preview.png"  alt="">
+        <p class="names" style="margin:0; color:black;">Khun Kim Heng<br>ID: 000097572</p>
+      </div>
+
+      <div class="lglgs" ">
+        <img src="pic/lokb.webp" style="box-shadow:2px 0px 10px 5px  #f7e927;" alt="">
+        <p class="names" style="margin:0; color:black;">Chun Savan<br>ID: 000097665</p>
+      </div>
+
+      <div class="lglgs">
+        <img src="pic/battman-removebg-preview.png" alt="">
+        <p class="names" style="margin:0; color:black;">Lang Kim hong<br>ID: 000099690</p>
+      </div>
+
+      <div class="lglgs">
+        <img src="pic/battman-removebg-preview.png" alt="">
+        <p class="names" style="margin:0; color:black;">Korng Seng Hong<br>ID: 000097560</p>
+      </div>
+
+      <div class="lglgs">
+        <img src="pic/battman-removebg-preview.png" alt="">
+        <p class="names" style="margin:0; color:black;">Seang Bun Seth<br>ID: 000096780</p>
+      </div>
+
+      <div class="lglgs">
+        <img src="pic/battman-removebg-preview.png" alt="">
+        <p class="names" style="margin:0; color:black;">Sothun Rachhy<br>ID: 000098845</p>
+      </div>
+    </div>
+  </div></div>
+        <div class="subtoch-8">This demonstration presents applications of number theory, including classical encryption-decryption methods and the RSA algorithm. In this report, I will describe the algorithm I developed and the work I have conducted.</div>
+    </div>
+</div>
+
+<div class="ti1" style="margin-top: 30px;margin-bottom: 20px;">
+<div class="Context">
+    <a href="http://127.0.0.1:55495/test.html" style="text-decoration:none;"><h2 class="loveu">Classical Cryptography</h2></a>
+    <h2 class="loveu" style="margin-right: 10px;">RSA</h2>
+</div>
+    <div class="ti-1">
+        II.RSA
+    </div>
+    <div class="ti-2">
+
+            <div class="ti-2-toch">
+            <div class="ahsor">II.I. RSA Cryptography</div>
+            <br>
+            <a href="#RSA-cry">
+            <img src="pic/rsa-cry.png" alt="">
+            </a>
+            </div>
+            <div class="ti-2-toch">
+                <div class="ahsor">II.I.I RSA Keygen </div>
+            <br>
+            <a href="#RSA-keygen">
+                <img src="pic/rsa-keygen.png" alt="">
+            </a></div>
+            
+            <div class="ti-2-toch">
+                <div class="ahsor">II.I.II RSA Encryption</div>
+            <br>
+            <a href="#RSA-encryption">
+                <img src="pic/rsa-encry.png" alt=""></a></div>
+                <div class="ti-2-toch">
+                <div class="ahsor">II.I.III RSA Decryption</div>
+            <br>
+            <a href="#RSA-decryption">
+                <img src="pic/rsa-decry.png" alt=""></div>    
+            </a>             
+        </div>
+        <hr>
+    <div class="ti-1" id="RSA-cry">II.I. RSA Cryptography</div>
+    <div class="yeah">
+        <div class="lglg" style="font-family: Arial, Helvetica, sans-serif; font-size: clamp(14px,2vw,16px);">
+        &ensp;&ensp;&ensp;"RSA (Rivest-Shamir-Adleman) is a widely used asymmetric encryption algorithm that relies on the mathematical properties of prime numbers. It was invented in 1977 by Ron Rivest, Adi Shamir, and Leonard Adleman. RSA is based on the difficulty of factoring large composite numbers into their prime factors."
+        </div>
+    </div> 
+    <hr>
+    <div class="ti-1" id="RSA-keygen">
+        II.I.I RSA Keygen
+    </div>
+    <div class="yeah">
+        <div class="lglg" style="font-family: Arial, Helvetica, sans-serif; font-size: clamp(14px,2vw,16px);">
+
+<p style="margin-bottom: 0px; display:block;" >
+  &ensp;&ensp;&ensp;RSA Key Generation is the process of creating a <b>pair of keys</b>: a <b>public key</b> and a <b>private key</b>.
+These keys are mathematically related and are used for encryption and decryption.
+</p>
+
+<hr>
+
+<h3 style="margin-top: 0px;margin-bottom: 0px;"><u>Select Two Prime Numbers</u></h3>
+
+<p style="margin-top: 4px;margin-bottom: 0px;">Choose two large prime numbers:</p>
+<ul>
+  <li>( p )</li>
+  <li>( q )</li>
+</ul>
+
+<p style="margin-top: 3px;margin-bottom: 0px;">These prime numbers must be kept <b>secret</b>.</p>
+
+<p style="margin-top: 3px;margin-bottom: 0px;"><b>Example:</b></p>
+<p style="margin-top: 3px;margin-bottom: 0px;">p = 61 , q = 53</p>
+
+<hr>
+
+<h3 style="margin-top: 3px;margin-bottom: 0px;"><u>Compute ( N )</u></h3>
+
+<p style="margin-top: 3px;margin-bottom: 0px;">Multiply the two primes:</p>
+<p style="margin-top: 3px;margin-bottom: 0px;">N = p × q = 61 × 53 = 3233, The value ( N ) is used in <b>both</b> public and private keys.</p>
+
+<hr>
+
+<h3><u>Compute Eulers Totient Function</u></h3>
+
+<p style="margin-top: 3px;margin-bottom: 0px;">φ(N) = (p - 1)(q - 1) ==> φ(N) = 60 × 52 = 3120</p>
+
+<hr>
+
+<h3><u>Choose the Public Exponent ( e )</u></h3>
+
+<p style="margin-top: 3px;margin-bottom: 0px;">Select a number ( e ) such that:</p>
+<ul style="margin-top: 3px;margin-bottom: 0px;">
+  <li>1 &lt; e &lt; φ(N)</li>
+  <li>gcd(e, φ(N)) = 1, <b>Example:</b> e = 7</li>
+</ul>
+
+<hr>
+
+<h3><u>Compute the Private Exponent ( d )</u></h3>
+
+<p style="margin-top: 3px;margin-bottom: 0px;">Find ( d ) such that: ( d × e = 1 (mod φ(N)) )</p>
+
+<p style="margin-top: 3px;margin-bottom: 0px;"><b> Result : </b>d = 1783</p>
+
+<hr>
+
+<h3 style="margin-top: 3px;margin-bottom: 0px;"><u>Form the Key Pair</u></h3>
+
+<ul style="margin-top: 3px;margin-bottom: 0px;line-height: 21px;">
+  <li><b>Public Key:</b> (e, N) = (7, 3233)</li>
+  <li><b>Private Key:</b> (d, N) = (1783, 3233)</li>
+  <li>Public key is used for <b>encryption</b></li>
+  <li>Private key is used for <b>decryption</b></li>
+  <li>Security depends on the difficulty of factoring ( N ) into ( p ) and ( q )</li>
+</ul>
+
+        </div>
+        <hr> 
+    </div>
+    <div class="yeah">
+        <div class="lglg" style="font-family: Arial, Helvetica, sans-serif; font-size: clamp(14px,2vw,16px);">
+            <h3><u>RSA Keygen Demo</u></h3>
+        </div>
+    </div>
+    <div class="yeah" style="background-image: url('pic/h.png');padding: 20px 10px;">
+        <div class="lglg">
+            <label for="keygenp" style="color:white;"><b>Enter the first prime Number(p) : </b></label>
+            <textarea style="width: 250px;" name="" id="keygenp" type="number" placeholder="Enter Numbers. Ex: 61"></textarea>
+        </div>
+        <div class="lglg">
+            <label for="keygenq" style="color:white;"><b>Enter the Second prime Number(q) : </b></label>
+            <textarea name="" style="width: 250px;" type="number" id="keygenq" placeholder="Enter Numbers. Ex: 53"></textarea>
+        </div>
+        <button id="btnRSA"  class="buttb" style="background-color: rgb(66, 132, 231);">
+            Generate Key
+        </button>
+        <div class="lglg">
+            <label for="keyrsa" style="color:white;">
+                 <b>Result:</b>
+            </label>
+            <textarea name="" id="keyrsa" style="width: 300px;" readonly placeholder="No Result"></textarea>
+        </div>
+    </div>
+    <hr>
+    <div class="ti-1" id="RSA-encryption">
+        II.I.II RSA Encryption
+    </div>
+    <div class="yeah">
+        <div class="lglg" style="font-family: Arial, Helvetica, sans-serif; font-size: clamp(14px,2vw,16px);">
+            <h3><u>RSA Encryption Demo</u></h3>
+       
+    <p style="margin-top: 3px;margin-bottom: 0px;"><strong>Message:</strong> HELLO</p>
+    <p style="margin-top: 3px;margin-bottom: 0px;"><strong>Formula:</strong></p>
+    <p style="margin-top: 3px;margin-bottom: 0px;">C = M<sup>e</sup> mod n</p>
+
+    <h3 style="margin-top: 3px;margin-bottom: 0px;">H = 8</h3>
+    <p style="margin-top: 3px;margin-bottom: 0px;">8<sup>7</sup> mod 3233 = 2168</p>
+
+    <h3 style="margin-top: 3px;margin-bottom: 0px;">E = 5</h3>
+    <p style="margin-top: 3px;margin-bottom: 0px;">5<sup>7</sup> mod 3233 = 533</p>
+
+    <h3 style="margin-top: 3px;margin-bottom: 0px;">L = 12</h3>
+    <p style="margin-top: 3px;margin-bottom: 0px;">12<sup>7</sup> mod 3233 = 496</p>
+
+    <h3 style="margin-top: 3px;margin-bottom: 0px;">Second L = 12</h3>
+    <p style="margin-top: 3px;margin-bottom: 0px;">12<sup>7</sup> mod 3233 = 496</p>
+
+    <h3 style="margin-top: 3px;margin-bottom: 0px;">O = 15</h3>
+    <p style="margin-top: 3px;margin-bottom: 0px;">15<sup>7</sup> mod 3233 = 1791</p>
+
+    <p style="margin-top: 3px;margin-bottom: 5px;">Encrypted message = <strong>2168 533 496 496 1791</strong></p>
+</div>
+    </div>
+    <div class="yeah" style="background-image: url('pic/h.png');padding: 20px 20px;">
+        <div class="lglg">
+            <label for="wow" style="color: white;"><b>Enter Your text  (Plain text or Cipher text): </b></label>
+            <textarea name="" style="width: 100%;" id="wow" placeholder="Ex: Hello"></textarea>
+        </div>
+        <div class="lglg">
+            <label for="" style="color: white;"><b>Publice key(e): </b></label>
+            <input name="" type="text" id="key-e" style="width: 80%;"></input>
+        </div>
+        <div class="lglg">
+            <label for="mod-n" style="color: white;"><b>The modulus(n): </b></label>
+            <input name="" id="mod-n" type="text" style="width: 80%;"></input>
+        </div>
+            <button class="buttb" id="btnRSAEncrypt">
+                Encrypt
+            </button>
+        <div class="lglg">
+            <label for="result-rsa-e" style="color: white;"><b>Result: </b></label>
+            <textarea name="" id="result-rsa-e" placeholder="No result!"></textarea>
+        </div>    
+    </div>
+    <hr>
+    <div class="ti-1" id="RSA-decryption">
+        II.I.III RSA Decryption
+    </div>
+    <div class="yeah" style="margin-bottom: 10px;">
+            <div class="lglg" style="font-family: Arial, Helvetica, sans-serif; font-size: clamp(14px,2vw,16px);margin-bottom: 10px;">
+                <h3><u>RSA Decryption Demo </u></h3>
+    <p style="margin-top: 3px;margin-bottom: 0px;"><strong>Encrypted message:</strong> 2168 533 496 496 1791</p>
+    <p style="margin-top: 3px;margin-bottom: 0px;"><strong>Formula:</strong></p>
+    <p style="margin-top: 3px;margin-bottom: 0px;">M = C<sup>d</sup> mod n</p>
+
+    <h3 style="margin-top: 3px;margin-bottom: 0px;">2168</h3>
+    <p style="margin-top: 3px;margin-bottom: 0px;">2168<sup>1783</sup> mod 3233 = 8</p>
+
+    <h3 style="margin-top: 3px;margin-bottom: 0px;">533</h3>
+    <p style="margin-top: 3px;margin-bottom: 0px;">533<sup>1783</sup> mod 3233 = 5</p>
+
+    <h3 style="margin-top: 3px;margin-bottom: 0px;">496</h3>
+    <p style="margin-top: 3px;margin-bottom: 0px;">496<sup>1783</sup> mod 3233 = 12</p>
+
+    <h3 style="margin-top: 3px;margin-bottom: 0px;">496 (second)</h3>
+    <p style="margin-top: 3px;margin-bottom: 0px;">496<sup>1783</sup> mod 3233 = 12</p>
+
+    <h3 style="margin-top: 3px;margin-bottom: 0px;">1791</h3>
+    <p style="margin-top: 3px;margin-bottom: 0px;">1791<sup>1783</sup> mod 3233 = 15</p>
+
+    <p style="margin-top: 3px;margin-bottom: 5px;">Decrypted message = <strong>HELLO</strong></p>
+</div>
+    </div>
+    <div class="yeah" style="background-image: url(pic/h.png); padding: 20px 10px;">
+        <div class="lglg">
+            <label for="t-rsa-d" style="color: white;"><b>Enter Your Text (Plain text or Cipher text): </b></label>
+            <textarea name="" id="t-rsa-d" placeholder="Ex:"></textarea>
+        </div>
+        <div class="lglg">
+            <label for="key-d" style="color: white;"><b>key(d): </b></label>
+            <input name="" type="text" id="key-d"style="width: 80%;"></input>
+        </div>
+        <div class="lglg">
+            <label for="mod-n-d" style="color: white;"><b>The modulus(n): </b></label>
+            <input name="" id="mod-n-d" type="text" style="width: 80%;"></input>
+        </div>
+        <button class="buttb" id="btnRSADecrypt">
+            Decrypt
+        </button>
+        <div class="lglg">
+            <label for="result-rsa-d" style="color: white;"><b>Result: </b></label>
+            <textarea name="" id="result-rsa-d" placeholder="No result!"></textarea>
+        </div> 
+    </div>
+    <hr>
+    <div class="ti-1">
+        III.Miscellaneous
+    </div>
+    <div class="yeahss" style="gap: 8px;padding-bottom: 30px;">
+        <div class="lglg" style="font-family: Arial, Helvetica, sans-serif; font-size: clamp(14px,2vw,16px);">
+            Cheak my repository for codes : 
+        </div>
+        <div class="lglg" style="font-family: Arial, Helvetica, sans-serif; font-size: clamp(14px,2vw,16px);text-align: center;"><a href="https://github.com/Rachhy/DM-Cipher-Project" style="color: #0a0b16;text-decoration: none;font-family: Arial, Helvetica, sans-serif; font-size: clamp(14px,2vw,16px);">(scan here)</a>
+            <img width="180px" src="pic/qrcode.png" alt="">
+        </div>
+    </div>
+    <div style="font-size: clamp(9px,2vw,10px);margin-left:15px;">
+    Source : Trust me bro!.
+</div>
+   
+</div>
+    </div>
+</body>
+  <script src="caesar.js"></script>
+  <script src="shift.js"></script>
+  <script src="affine.js"></script>
+  <script src="transposition.js"></script>
+  <script src="rsa.js"></script>
+  <script src="main.js"></script>
+  <script src="rsa_keygen.js"></script>
+  <script src="rsa_encrypt.js"></script>
+  <script src="rsa_decrypt.js"></script>
+  <script src="menber.js"></script>
+  
+</html>
